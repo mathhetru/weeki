@@ -3,15 +3,27 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "-----DEFAULT-----": "exit 0",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "-----PRETTIER-----": "exit 0",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "-----ESLINT-----": "exit 0",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@nuxt/eslint": "^1.13.0",
     "nuxt": "^4.3.0",
     "vue": "^3.5.27",
     "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "prettier": "3.8.1"
   }
 }

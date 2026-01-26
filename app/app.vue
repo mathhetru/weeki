@@ -4,3 +4,5 @@
     <NuxtWelcome />
   </div>
 </template>
+
+<script setup="ts"></script>
