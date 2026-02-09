@@ -1,8 +1,11 @@
 <template>
-  <div>
-    <p>Weena et la légende de Noor</p>
+  <div v-if="data">
+    <p>{{ data.title }}</p>
     <HeroItem />
+    <SearchItem />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const { data } = await useAsyncData('home', () => queryCollection('pages').first())
+</script>

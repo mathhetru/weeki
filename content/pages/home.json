@@ -1,21 +1,34 @@
 {
-  "title": "Accueil",
+  "title": "Weena et la légende de Noor",
   "features": [
     {
-      "title": "Feature 1",
-      "text": "rajout de blablabla"
-    },
-    {
-      "title": "Feature 2",
+      "title": "Personnages",
+      "img": "/images/personnages.png",
       "text": "..."
     },
     {
-      "title": "test",
-      "text": "no empty"
+      "title": "Créatures",
+      "img": "/images/creatures.png",
+      "text": "..."
+    },
+    {
+      "title": "Peuples",
+      "img": "/images/peuples.png",
+      "text": "..."
+    },
+    {
+      "title": "Lieux",
+      "img": "/images/lieux.png",
+      "text": "..."
+    },
+    {
+      "title": "Teste",
+      "text": "...",
+      "img": "/images/test.png"
     }
   ],
   "hero": {
-    "heading": "My title",
-    "description": "My descriptionszdczeezf"
+    "heading": "Tout l’univers de Nym-Bruyn",
+    "description": "Retrouvez les personnages, leur généalogie, les créatures, les peuples, les lieux..."
   }
 }
