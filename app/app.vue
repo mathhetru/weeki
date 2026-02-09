@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <p>Weena et la légende de Noor</p>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script setup="ts"></script>

@@ -1,3 +1,6 @@
 # Ignore artifacts:
 build
 coverage
+
+# JSON files in content directory
+content/**/*.json

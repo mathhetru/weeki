@@ -1,0 +1,21 @@
+{
+  "title": "Accueil",
+  "features": [
+    {
+      "title": "Feature 1",
+      "text": "rajout de blablabla"
+    },
+    {
+      "title": "Feature 2",
+      "text": "..."
+    },
+    {
+      "title": "test",
+      "text": "no empty"
+    }
+  ],
+  "hero": {
+    "heading": "My title",
+    "description": "My descriptionszdczeezf"
+  }
+}
