@@ -52,19 +52,15 @@ export default defineNuxtConfig({
   },
   security: {
     headers: {
-      contentSecurityPolicy:
-        process.env.NODE_ENV === 'production'
-          ? {
-              'default-src': ["'self'"],
-              'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'", "'wasm-unsafe-eval'"],
-              'script-src-attr': ["'unsafe-inline'"],
-              'style-src': ["'self'", "'unsafe-inline'"],
-              'img-src': ["'self'", 'data:', 'https:'],
-              'font-src': ["'self'", 'data:'],
-              'connect-src': ["'self'", 'https:'],
-              'frame-src': ["'self'", 'https://app.netlify.com'],
-            }
-          : false,
+      contentSecurityPolicy: {
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          "'wasm-unsafe-eval'",
+          'https://cloud.umami.is',
+        ],
+      },
     },
   },
 })
