@@ -33,6 +33,23 @@ export default defineNuxtConfig({
       branch: 'content',
     },
   },
+  app: {
+    head: {
+      script:
+        process.env.NODE_ENV === 'production'
+          ? [
+              {
+                defer: true,
+                src: process.env.NUXT_PUBLIC_UMAMI_URL,
+                'data-website-id': process.env.NUXT_PUBLIC_UMAMI_ID,
+              },
+            ]
+          : [],
+      htmlAttrs: {
+        lang: 'fr',
+      },
+    },
+  },
   security: {
     headers: {
       contentSecurityPolicy:
