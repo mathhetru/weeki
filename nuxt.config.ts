@@ -2,8 +2,29 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/content', 'nuxt-studio', '@nuxt/image', 'nuxt-security'],
-  content: {},
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/content',
+    'nuxt-studio',
+    '@nuxt/image',
+    'nuxt-security',
+    '@nuxt/ui',
+    '@nuxt/fonts',
+  ],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    colorMode: false,
+  },
+  fonts: {
+    families: [
+      { name: 'Birthstone Bounce', provider: 'google', weights: [400, 500] },
+      {
+        name: 'Montserrat',
+        provider: 'google',
+        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      },
+    ],
+  },
   studio: {
     repository: {
       provider: 'github',

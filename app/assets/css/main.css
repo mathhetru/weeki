@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--depth);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+@layer base {
+  :root {
+    /* Couleurs */
+    --primary: 59 130 246;
+    --secondary: 139 92 246;
+    --accent: 236 72 153;
+    --depth: #dadada;
+
+    /* Spacing */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+
+    /* Fonts */
+    --font-main: 'Montserrat', sans-serif;
+    --font-heading: 'Birthstone Bounce', sans-serif;
+  }
+}

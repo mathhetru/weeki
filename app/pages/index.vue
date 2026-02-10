@@ -1,6 +1,5 @@
 <template>
   <div v-if="data">
-    <p>{{ data.title }}</p>
     <HeroItem />
     <SearchItem />
   </div>

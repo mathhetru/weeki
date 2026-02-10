@@ -1,6 +1,6 @@
 <template>
   <div v-if="data">
-    <h1>{{ data?.hero?.heading }}</h1>
+    <h1 class="text-3xl font-heading">{{ data?.hero?.heading }}</h1>
     <p>{{ data?.hero?.description }}</p>
     <div v-for="feature in data.features" :key="feature.title">
       <h3>{{ feature?.title }}</h3>

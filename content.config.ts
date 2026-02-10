@@ -11,6 +11,7 @@ export default defineContentConfig({
           img: z.string(),
           ariaLabel: z.string(),
           link: z.string(),
+          text: z.string(),
         }),
         pages: z.array(
           z.object({
