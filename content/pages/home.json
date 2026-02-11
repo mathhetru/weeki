@@ -2,29 +2,29 @@
   "title": "Weena et la légende de Noor",
   "features": [
     {
-      "title": "Personnages",
-      "img": "/images/personnages.png",
+      "title": "Créatures",
+      "img": "/images/creatures.png",
       "text": "..."
     },
     {
-      "title": "Créatures",
-      "img": "/images/creatures.png",
+      "title": "Personnages",
+      "img": "/images/personnages.png",
       "text": "..."
     },
     {
       "title": "Peuples",
       "img": "/images/peuples.png",
       "text": "..."
-    },
+    },    
     {
       "title": "Lieux",
       "img": "/images/lieux.png",
       "text": "..."
     },
     {
-      "title": "Teste",
-      "text": "...",
-      "img": "/images/test.png"
+      "title": "Généalogie",
+      "img": "/images/test.png",
+      "text": "..."
     }
   ],
   "hero": {

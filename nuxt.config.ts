@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
   ],
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+      },
+    },
+  },
   css: ['~/assets/css/main.css'],
   ui: {
     colorMode: false,
@@ -26,6 +33,7 @@ export default defineNuxtConfig({
     ],
   },
   studio: {
+    dev: false,
     repository: {
       provider: 'github',
       owner: 'mathhetru',
