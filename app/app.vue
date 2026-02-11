@@ -2,7 +2,7 @@
   <UApp :locale="fr">
     <HeaderItem />
     <NuxtLayout>
-      <div class="pt-22 px-4">
+      <div class="pt-28 px-4">
         <NuxtPage />
       </div>
     </NuxtLayout>
