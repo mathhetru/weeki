@@ -51,7 +51,7 @@ export const useEntitesStore = defineStore('entites', () => {
     error.value = null
 
     try {
-      entites.value = await $fetch('/api/entites/search', {
+      entites.value = await $fetch<Entite[]>('/api/entites/search', {
         params: { q: terme },
       })
     } catch (e) {
