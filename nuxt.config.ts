@@ -10,6 +10,8 @@ export default defineNuxtConfig({
     'nuxt-security',
     '@nuxt/ui',
     '@nuxt/fonts',
+    '@nuxtjs/supabase',
+    '@pinia/nuxt',
   ],
   vite: {
     server: {
@@ -40,6 +42,11 @@ export default defineNuxtConfig({
       repo: 'weeki',
       branch: 'content',
     },
+  },
+  supabase: {
+    redirect: false,
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
   },
   app: {
     head: {
