@@ -20,7 +20,6 @@ export const useEntitesStore = defineStore('entites', () => {
       })
 
       entites.value = data || []
-      //@ts-except-error
     } catch (e) {
       const err = e as Error
       error.value = err.message
@@ -29,10 +28,9 @@ export const useEntitesStore = defineStore('entites', () => {
     }
   }
 
-  // Récupérer une entité par ID
   const getEntiteById = async (id: string) => {
     try {
-      return await $fetch(`/api/entites/${id}`)
+      return await $fetch<Entite>(`/api/entites/${id}`)
     } catch (e) {
       const err = e as Error
       error.value = err.message
@@ -40,7 +38,6 @@ export const useEntitesStore = defineStore('entites', () => {
     }
   }
 
-  // Rechercher
   const searchEntites = async (terme: string) => {
     if (!terme) {
       await loadEntites()
@@ -62,7 +59,6 @@ export const useEntitesStore = defineStore('entites', () => {
     }
   }
 
-  // Entités filtrées par recherche locale
   const entitesFilter = computed(() => {
     if (!searchValue.value) return entites.value
 
