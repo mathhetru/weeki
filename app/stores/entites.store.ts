@@ -5,14 +5,17 @@ import type { Entite } from '~/types/database.types'
 export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
   const typeFilter = ref<'tous' | 'personnage' | 'lieu' | 'creature'>('tous')
-  const searchValue = ref('')
-  const loading = ref(false)
-  const error = ref<string | null>(null)
+  const searchValue = ref<string>('')
+  const isLoading = ref(true)
+  const isError = ref(false)
+  const errorMessage = ref('')
 
   //TODO rework types and error types
+
   const loadEntites = async () => {
-    loading.value = true
-    error.value = null
+    isLoading.value = true
+    isError.value = false
+    errorMessage.value = ''
 
     try {
       const data = await $fetch<Entite[]>('/api/entites', {
@@ -22,9 +25,10 @@ export const useEntitesStore = defineStore('entites', () => {
       entites.value = data || []
     } catch (e) {
       const err = e as Error
-      error.value = err.message
+      isError.value = true
+      errorMessage.value = err.message || 'Une erreur est survenue'
     } finally {
-      loading.value = false
+      isLoading.value = false
     }
   }
 
@@ -33,8 +37,9 @@ export const useEntitesStore = defineStore('entites', () => {
       return await $fetch<Entite>(`/api/entites/${id}`)
     } catch (e) {
       const err = e as Error
-      error.value = err.message
-      throw error
+      isError.value = true
+      errorMessage.value = err.message
+      throw err
     }
   }
 
@@ -44,8 +49,8 @@ export const useEntitesStore = defineStore('entites', () => {
       return
     }
 
-    loading.value = true
-    error.value = null
+    isLoading.value = true
+    errorMessage.value = ''
 
     try {
       entites.value = await $fetch<Entite[]>('/api/entites/search', {
@@ -53,9 +58,10 @@ export const useEntitesStore = defineStore('entites', () => {
       })
     } catch (e) {
       const err = e as Error
-      error.value = err.message
+      isError.value = true
+      errorMessage.value = err.message
     } finally {
-      loading.value = false
+      isLoading.value = false
     }
   }
 
@@ -117,8 +123,9 @@ export const useEntitesStore = defineStore('entites', () => {
     entites,
     typeFilter,
     searchValue,
-    loading,
-    error,
+    isLoading,
+    isError,
+    errorMessage,
     entitesFilter,
     loadEntites,
     getEntiteById,
