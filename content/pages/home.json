@@ -3,26 +3,31 @@
   "features": [
     {
       "title": "Créatures",
+      "search": "creature",
       "img": "/images/creatures.png",
       "text": "..."
     },
     {
       "title": "Personnages",
+      "search": "personnage",
       "img": "/images/personnages.png",
       "text": "..."
     },
     {
       "title": "Peuples",
+      "search": "peuple",
       "img": "/images/peuples.png",
       "text": "..."
     },    
     {
       "title": "Lieux",
+      "search": "lieu",
       "img": "/images/lieux.png",
       "text": "..."
     },
     {
       "title": "Généalogie",
+      "search": "genealogie",
       "img": "/images/test.png",
       "text": "..."
     }

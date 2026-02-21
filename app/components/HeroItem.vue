@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="data"
-    class="mx-auto w-[75%] flex flex-row gap-4 rounded-4xl bg-white/30 p-10 shadow-lg items-center mt-15 h-150"
+    class="mx-auto w-[75%] max-w-7xl flex flex-row gap-4 rounded-4xl bg-white/30 p-10 shadow-lg items-center mt-15 h-150"
   >
     <div class="w-[30%] h-full flex flex-col gap-4 text-center justify-center mx-12">
       <h1 class="text-4xl font-heading">{{ data?.hero?.heading }}</h1>
@@ -11,8 +11,9 @@
       <NuxtLink
         v-for="(feature, index) in data.features"
         :key="feature.title"
-        :to="`#${feature?.title.toLowerCase()}`"
+        :to="searchItem(feature?.search)"
         :class="getGridClass(index)"
+        @click="addTypeFilter(feature?.search)"
       >
         <div class="absolute inset-0">
           <NuxtImg
@@ -31,6 +32,10 @@
 </template>
 
 <script setup="ts">
+  import { useEntitesStore } from '../stores/entites.store'
+
+  const entitesStore = useEntitesStore()
+
   const { data } = await useAsyncData('home-hero', () => queryCollection('pages').first())
 
   const getGridClass = (index) => {
@@ -43,5 +48,18 @@
       4: 'row-span-1 col-start-3 row-start-2 mb-24',
     }
     return `${baseClass} ${gridClasses[index] || ''}`
+  }
+
+  const addTypeFilter = async (filterToAdd) => {
+    entitesStore.typeFilter = filterToAdd
+    await entitesStore.searchEntites()
+  }
+
+  const searchItem = (item) => {
+    if (item === 'genealogie') {
+      return '/genealogie'
+    }
+
+    return '#search'
   }
 </script>

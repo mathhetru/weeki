@@ -38,6 +38,7 @@ export default defineContentConfig({
         features: z.array(
           z.object({
             title: z.string(),
+            search: z.string(),
             img: z.string(),
             text: z.string(),
           })
