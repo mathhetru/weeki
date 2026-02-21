@@ -40,7 +40,6 @@ export default defineNuxtConfig({
       provider: 'github',
       owner: 'mathhetru',
       repo: 'weeki',
-      branch: 'content',
     },
   },
   supabase: {
