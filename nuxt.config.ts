@@ -39,6 +39,7 @@ export default defineNuxtConfig({
     repository: {
       provider: 'github',
       owner: 'mathhetru',
+      branch: 'content',
       repo: 'weeki',
     },
   },
