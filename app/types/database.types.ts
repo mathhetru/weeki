@@ -16,3 +16,11 @@ export type Entite = {
   relations?: string[]
   lieu_id?: string
 }
+
+export interface EntiteTree {
+  id: string
+  nom: string
+  espece?: string
+  type?: string
+  highlight?: boolean
+}

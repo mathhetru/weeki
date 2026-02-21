@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Entite } from '~/types/database.types'
+import type { Entite, EntiteTree } from '~/types/database.types'
 
 export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
@@ -11,6 +11,7 @@ export const useEntitesStore = defineStore('entites', () => {
   const errorMessage = ref('')
   const currentPage = ref(1)
   const hasMore = ref(true)
+  const tree = ref<EntiteTree[][][]>([])
 
   const loadEntites = async () => {
     if (!hasMore.value) return
@@ -91,6 +92,22 @@ export const useEntitesStore = defineStore('entites', () => {
     )
   })
 
+  const loadTree = async (selectedFamilyRoot: string) => {
+    isLoading.value = true
+    isError.value = false
+
+    try {
+      const data = await $fetch<EntiteTree[][][]>(`/api/genealogie/${selectedFamilyRoot}`)
+      tree.value = data
+    } catch (e) {
+      const err = e as Error
+      isError.value = true
+      errorMessage.value = err.message
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   return {
     entites,
     typeFilter,
@@ -104,5 +121,6 @@ export const useEntitesStore = defineStore('entites', () => {
     resetAndLoad,
     getEntiteById,
     searchEntites,
+    loadTree,
   }
 })
