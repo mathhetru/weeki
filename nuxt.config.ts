@@ -39,8 +39,8 @@ export default defineNuxtConfig({
     repository: {
       provider: 'github',
       owner: 'mathhetru',
-      repo: 'weeki',
       branch: 'content',
+      repo: 'weeki',
     },
   },
   supabase: {
@@ -74,7 +74,9 @@ export default defineNuxtConfig({
           "'unsafe-eval'",
           "'wasm-unsafe-eval'",
           'https://cloud.umami.is',
+          'https://esm.sh',
         ],
+        'img-src': ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
       },
     },
   },

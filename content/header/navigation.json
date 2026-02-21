@@ -2,10 +2,15 @@
   "title": {
     "img": "/images/test.png",
     "ariaLabel": "Logo de Weena et la légende de Noor",
-    "text": "Wiki Weëna et la Légende de Noor",
+    "text": "Weëki Weëna et la Légende de Noor",
     "link": "/"
-  },  
-  "pages": [    
+  },
+  "contact": {
+    "text": "Qui sommes-nous ?",
+    "ariaLabel": "Lien vers page à propos de nous",
+    "link": "/qui-sommes-nous"
+  },
+  "pages": [
     {
       "link": "/",
       "text": "Tout l'univers"
@@ -18,10 +23,5 @@
       "link": "/auteurs",
       "text": "Auteurs"
     }
-  ],
-  "contact": {
-    "text": "Qui sommes-nous ?",
-    "ariaLabel": "Lien vers page à propos de nous",
-    "link": "/qui-sommes-nous"
-  }
+  ]
 }
