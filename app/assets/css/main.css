@@ -4,6 +4,7 @@
 body {
   font-family: var(--font-main);
   background-color: var(--depth);
+  scroll-behavior: smooth;
 }
 
 .font-heading {
@@ -13,10 +14,13 @@ body {
 @layer base {
   :root {
     /* Couleurs */
-    --primary: 59 130 246;
-    --secondary: 139 92 246;
-    --accent: 236 72 153;
-    --depth: #dadada;
+    --ui-primary: var(--color-indigo-900);
+    --ui-secondary: var(--color-indigo-400);
+    --depth: var(--color-slate-200);
+    --ui-success: var(--color-indigo-900);
+    --ui-info: var(--ui-color-teal-500);
+    --ui-warning: var(--ui-color-rose-500);
+    --ui-error: var(--ui-color-red-700);
 
     /* Spacing */
     --spacing-sm: 0.5rem;

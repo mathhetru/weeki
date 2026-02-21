@@ -23,6 +23,8 @@
     "@nuxt/fonts": "^0.13.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.4.0",
+    "@nuxtjs/supabase": "^2.0.3",
+    "@pinia/nuxt": "^0.11.3",
     "better-sqlite3": "^12.6.2",
     "nuxt": "^4.3.0",
     "nuxt-security": "^2.5.1",
