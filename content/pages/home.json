@@ -18,7 +18,7 @@
       "search": "peuple",
       "img": "/images/peuples.png",
       "text": "..."
-    },    
+    },
     {
       "title": "Lieux",
       "search": "lieu",
@@ -34,6 +34,6 @@
   ],
   "hero": {
     "heading": "Tout l’univers de Nym-Bruyn",
-    "description": "Retrouvez les personnages, leur généalogie, les créatures, les peuples, les lieux..."
+    "description": "Retrouvez les personnages, leur généalogie, les créatures, les peuples et les lieux !"
   }
 }

@@ -39,8 +39,8 @@ export default defineNuxtConfig({
     repository: {
       provider: 'github',
       owner: 'mathhetru',
-      repo: 'weeki',
       branch: 'content',
+      repo: 'weeki',
     },
   },
   supabase: {
@@ -90,6 +90,7 @@ export default defineNuxtConfig({
           'https://res.cloudinary.com',
           'https://cloud.umami.is',
         ],
+        'img-src': ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
       },
     },
   },
