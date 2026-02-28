@@ -13,7 +13,7 @@
         :key="feature.title"
         :to="searchItem(feature?.search)"
         :class="getGridClass(index)"
-        @click="addTypeFilter(feature?.search)"
+        @click="addTypeFilter(feature?.search as typeFilter)"
       >
         <div class="absolute inset-0">
           <NuxtImg
@@ -31,16 +31,17 @@
   <div v-else>No data available</div>
 </template>
 
-<script setup="ts">
+<script setup lang="ts">
   import { useEntitesStore } from '../stores/entites.store'
+  import type { typeFilter } from '../types/database.types'
 
   const entitesStore = useEntitesStore()
 
   const { data } = await useAsyncData('home-hero', () => queryCollection('pages').first())
 
-  const getGridClass = (index) => {
+  const getGridClass = (index: number) => {
     const baseClass = 'relative rounded-3xl overflow-hidden'
-    const gridClasses = {
+    const gridClasses: Record<number, string> = {
       0: 'row-span-1 col-start-1 row-start-1 mt-24',
       1: 'row-span-3 col-start-2 row-start-1',
       2: 'row-span-1 col-start-3 row-start-1 mt-24',
@@ -50,16 +51,16 @@
     return `${baseClass} ${gridClasses[index] || ''}`
   }
 
-  const addTypeFilter = async (filterToAdd) => {
-    entitesStore.typeFilter = filterToAdd
-    await entitesStore.searchEntites()
+  const addTypeFilter = (filterToAdd: typeFilter) => {
+    if (filterToAdd !== ('genealogie' as typeFilter)) {
+      entitesStore.typeFilter = filterToAdd
+    }
   }
 
-  const searchItem = (item) => {
+  const searchItem = (item: string) => {
     if (item === 'genealogie') {
       return '/genealogie'
     }
-
     return '#search'
   }
 </script>

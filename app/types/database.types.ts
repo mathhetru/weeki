@@ -1,5 +1,7 @@
 export type EntiteType = 'personnage' | 'lieu' | 'creature'
 
+export type typeFilter = 'tous' | 'personnage' | 'lieu' | 'creature' | 'peuple'
+
 export type Entite = {
   id: string
   created_at: string
@@ -15,4 +17,12 @@ export type Entite = {
   tomes?: string[]
   relations?: string[]
   lieu_id?: string
+}
+
+export interface EntiteTree {
+  id: string
+  nom: string
+  espece?: string
+  type?: string
+  highlight?: boolean
 }

@@ -74,8 +74,28 @@ export default defineNuxtConfig({
           "'unsafe-eval'",
           "'wasm-unsafe-eval'",
           'https://cloud.umami.is',
+          'https://esm.sh',
+        ],
+        'script-src-elem': [
+          "'self'",
+          "'unsafe-inline'",
+          "'wasm-unsafe-eval'",
+          'https://cloud.umami.is',
+          'https://esm.sh',
+        ],
+        'img-src': [
+          "'self'",
+          'data:',
+          'https://avatars.githubusercontent.com',
+          'https://res.cloudinary.com',
+          'https://cloud.umami.is',
         ],
       },
+    },
+  },
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dbihnwsar/image/upload',
     },
   },
 })
