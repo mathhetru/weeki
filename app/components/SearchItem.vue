@@ -1,6 +1,6 @@
 <template>
-  <div id="search" class="pt-30 pb-50 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Encyclopédie</h1>
+  <div id="search" class="pt-30 pb-10 max-w-7xl mx-auto">
+    <h1 class="font-heading text-5xl mb-6">Encyclopédie</h1>
 
     <div class="mb-6 space-y-4">
       <input
@@ -14,35 +14,35 @@
         <UButton
           :color="typeFilter === 'tous' ? 'primary' : 'secondary'"
           class="text-white px-4 py-2 rounded"
-          @click="typeFilter = 'tous'"
+          @click="addTypeFilter('tous')"
         >
           Tous
         </UButton>
         <UButton
           :color="typeFilter === 'personnage' ? 'primary' : 'secondary'"
           class="text-white px-4 py-2 rounded"
-          @click="typeFilter = 'personnage'"
+          @click="addTypeFilter('personnage')"
         >
           Personnages
         </UButton>
         <UButton
           :color="typeFilter === 'lieu' ? 'primary' : 'secondary'"
           class="text-white px-4 py-2 rounded"
-          @click="typeFilter = 'lieu'"
+          @click="addTypeFilter('lieu')"
         >
           Lieux
         </UButton>
         <UButton
           :color="typeFilter === 'creature' ? 'primary' : 'secondary'"
           class="text-white px-4 py-2 rounded"
-          @click="typeFilter = 'creature'"
+          @click="addTypeFilter('creature')"
         >
           Créatures
         </UButton>
         <UButton
           :color="typeFilter === 'peuple' ? 'primary' : 'secondary'"
           class="text-white px-4 py-2 rounded"
-          @click="typeFilter = 'peuple'"
+          @click="addTypeFilter('peuple')"
         >
           Peuples
         </UButton>
@@ -102,11 +102,11 @@
       </NuxtLink>
     </div>
 
-    <div ref="loadMoreTrigger" class="h-20 flex items-center justify-center">
+    <div ref="loadMoreTrigger" class="h-10 flex items-center justify-center">
       <UIcon
         v-if="isLoading"
         name="i-heroicons-arrow-path"
-        class="w-8 h-8 animate-spin text-primary"
+        class="w-8 h-10 animate-spin text-primary"
       />
     </div>
   </div>
@@ -114,6 +114,7 @@
 
 <script setup lang="ts">
   import { useEntitesStore } from '../stores/entites.store'
+  import type { typeFilter } from '../types/database.types'
   import { storeToRefs } from 'pinia'
 
   const entitesStore = useEntitesStore()
@@ -123,12 +124,19 @@
   const loadMoreTrigger = ref<HTMLElement | null>(null)
   const isVisible = ref(false)
 
+  const addTypeFilter = (filterToAdd: typeFilter) => {
+    if (filterToAdd !== ('genealogie' as typeFilter)) {
+      entitesStore.typeFilter = filterToAdd
+    }
+  }
+
   let observer: IntersectionObserver | null = null
 
   onMounted(async () => {
-    await entitesStore.loadEntites()
+    entitesStore.resetFilters()
+    await entitesStore.getEntites()
 
-    observer = new IntersectionObserver((entries) => {
+    observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       const entry = entries[0]
       if (entry) {
         isVisible.value = entry.isIntersecting
