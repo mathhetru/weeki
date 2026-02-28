@@ -1,18 +1,19 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Entite } from '~/types/database.types'
+import type { Entite, EntiteTree, typeFilter } from '~/types/database.types'
 
 export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
-  const typeFilter = ref<'tous' | 'personnage' | 'lieu' | 'creature' | 'peuple'>('tous')
+  const typeFilter = ref<typeFilter>('tous')
   const searchValue = ref<string>('')
   const isLoading = ref(true)
   const isError = ref(false)
   const errorMessage = ref('')
   const currentPage = ref(1)
   const hasMore = ref(true)
+  const tree = ref<EntiteTree[][][]>([])
 
-  const loadEntites = async () => {
+  const getEntites = async () => {
     if (!hasMore.value) return
     isError.value = false
     errorMessage.value = ''
@@ -39,7 +40,7 @@ export const useEntitesStore = defineStore('entites', () => {
   const loadMore = () => {
     if (hasMore.value && !isLoading.value) {
       currentPage.value++
-      loadEntites()
+      return getEntites()
     }
   }
 
@@ -47,7 +48,7 @@ export const useEntitesStore = defineStore('entites', () => {
     entites.value = []
     currentPage.value = 1
     hasMore.value = true
-    loadEntites()
+    return getEntites()
   }
 
   const getEntiteById = async (id: string) => {
@@ -63,7 +64,7 @@ export const useEntitesStore = defineStore('entites', () => {
 
   const searchEntites = async (terme: string) => {
     if (!terme) {
-      await loadEntites()
+      await getEntites()
       return
     }
 
@@ -91,6 +92,30 @@ export const useEntitesStore = defineStore('entites', () => {
     )
   })
 
+  const getEntitesOnTree = async (selectedFamilyRoot: string) => {
+    isLoading.value = true
+    isError.value = false
+
+    try {
+      const data = await $fetch<EntiteTree[][][]>(`/api/genealogie/${selectedFamilyRoot}`)
+      tree.value = data
+    } catch (e) {
+      const err = e as Error
+      isError.value = true
+      errorMessage.value = err.message
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  const resetFilters = () => {
+    typeFilter.value = 'tous'
+    searchValue.value = ''
+    currentPage.value = 1
+    hasMore.value = true
+    entites.value = []
+  }
+
   return {
     entites,
     typeFilter,
@@ -100,9 +125,11 @@ export const useEntitesStore = defineStore('entites', () => {
     errorMessage,
     entitesFilter,
     loadMore,
-    loadEntites,
+    getEntites,
     resetAndLoad,
     getEntiteById,
     searchEntites,
+    getEntitesOnTree,
+    resetFilters,
   }
 })

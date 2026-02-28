@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO add breadcrumbs -->
   <div class="mx-auto w-[75%] max-w-7xl">
     <p v-if="pending">Chargement...</p>
     <div v-else-if="entite" class="flex flex-col gap-1.5">
@@ -18,6 +19,14 @@
         {{ relation }}
       </p>
       <p v-if="entite.lieu_id">Lieu : {{ entite.lieu_id }}</p>
+      <NuxtImg
+        v-if="entite.image_url"
+        format="webp"
+        provider="cloudinary"
+        :src="entite.image_url"
+        :alt="`Image de${entite.nom}`"
+        class="w-75 h-auto rounded-lg object-cover"
+      />
     </div>
     <div v-else-if="error">"Entitée non trouvée !"</div>
     <UButton
