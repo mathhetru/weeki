@@ -17,6 +17,7 @@
       >
         <div class="absolute inset-0">
           <NuxtImg
+            :provider="providerToUse(feature?.img)"
             :src="feature?.img"
             :alt="`Image de ${feature?.title}`"
             class="w-full h-full object-cover"
@@ -63,4 +64,7 @@
     }
     return '#search'
   }
+
+  //TODO remove this when all images will be on cloudinary
+  const providerToUse = (img: string) => (img.includes('/images/') ? undefined : 'cloudinary')
 </script>

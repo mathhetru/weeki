@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const { data: personnages, error } = await supabase
     .from('entites')
-    .select('id, nom, espece, type')
+    .select('id, nom, type')
     .eq('type', 'personnage')
 
   if (error) {
