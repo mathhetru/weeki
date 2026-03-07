@@ -4,8 +4,13 @@
     "ariaLabel": "Logo de Weena et la légende de Noor",
     "text": "Wiki Weëna et la Légende de Noor",
     "link": "/"
-  },  
-  "pages": [    
+  },
+  "contact": {
+    "text": "Qui sommes-nous ?",
+    "ariaLabel": "Lien vers page à propos de nous",
+    "link": "/qui-sommes-nous"
+  },
+  "pages": [
     {
       "link": "/#weekipedia",
       "text": "Weëkipedia"
@@ -22,10 +27,5 @@
       "link": "/auteurs",
       "text": "Auteurs"
     }
-  ],
-  "contact": {
-    "text": "Qui sommes-nous ?",
-    "ariaLabel": "Lien vers page à propos de nous",
-    "link": "/qui-sommes-nous"
-  }
+  ]
 }
