@@ -26,6 +26,18 @@ export default defineContentConfig({
         }),
       }),
     }),
+    footer: defineCollection({
+      type: 'data',
+      source: 'footer/navigation.json',
+      schema: z.object({
+        links: z.array(
+          z.object({
+            name: z.string(),
+            url: z.string(),
+          })
+        ),
+      }),
+    }),
     pages: defineCollection({
       type: 'data',
       source: 'pages/home.json',

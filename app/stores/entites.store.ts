@@ -131,5 +131,6 @@ export const useEntitesStore = defineStore('entites', () => {
     searchEntites,
     getEntitesOnTree,
     resetFilters,
+    hasMore,
   }
 })

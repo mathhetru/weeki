@@ -3,10 +3,18 @@
   <div class="mx-auto w-[75%] max-w-7xl">
     <p v-if="pending">Chargement...</p>
     <div v-else-if="entite" class="flex flex-col gap-1.5">
-      <p>Nom : {{ entite.nom }}</p>
-      <p>Type : {{ entite.type }}</p>
+      <h1 class="text-4xl font-heading mb-4">{{ entite.nom }}</h1>
+      <div v-if="entite.gender === 'Féminin'" class="text-2xl font-bold flex items-center gap-1.5">
+        <UIcon name="gg:gender-female" />
+      </div>
+      <div
+        v-else-if="entite.gender === 'Masculin'"
+        class="text-2xl font-bold flex items-center gap-1.5"
+      >
+        <UIcon name="gg:gender-male" />
+      </div>
+      <p class="capitalize">{{ entite.type }}</p>
       <p>Description : {{ entite.description }}</p>
-      <p v-if="entite.espece">Espèce : {{ entite.espece }}</p>
       <p v-if="entite.vivant">Espèce vivante</p>
       <p v-if="entite.dangereux">Espèce dangeureuse</p>
       <p v-if="entite.hostile">Espèce hostile</p>

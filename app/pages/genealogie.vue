@@ -24,7 +24,7 @@
                   :key="personne.id"
                   :to="`/entites/${personne.id}`"
                   class="person-card"
-                  :class="{ feminine: personne.type === 'personnage' }"
+                  :class="{ feminine: personne.gender === 'Féminin' }"
                 >
                   <div class="name">{{ personne.nom }}</div>
                   <div class="role">{{ personne.type }}</div>
@@ -59,7 +59,7 @@
                     :key="personne.id"
                     :to="`/entites/${personne.id}`"
                     class="person-card"
-                    :class="{ feminine: personne.type === 'personnage' }"
+                    :class="{ feminine: personne.gender === 'Féminin' }"
                   >
                     <div class="name">{{ personne.nom }}</div>
                     <div class="role">{{ personne.type }}</div>
