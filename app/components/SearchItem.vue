@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="search" class="pt-10 mb-10 max-w-7xl mx-auto">
+    <div id="weekipedia" class="pt-30 mb-10 max-w-7xl mx-auto">
       <h1 class="font-heading text-5xl mb-6">Encyclopédie</h1>
       <div class="mb-6 space-y-4">
         <input
