@@ -7,8 +7,12 @@
   },  
   "pages": [    
     {
-      "link": "/",
-      "text": "Tout l'univers"
+      "link": "/#weekipedia",
+      "text": "Weëkipedia"
+    },
+    {
+      "link": "/genealogie",
+      "text": "Généalogie"
     },
     {
       "link": "/tomes",

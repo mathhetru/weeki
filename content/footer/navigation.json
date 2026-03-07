@@ -1,0 +1,20 @@
+{
+  "links": [    
+    {
+      "url": "/",
+      "text": "Tout l'univers"
+    },
+    {
+      "url": "/genealogie",
+      "text": "Généalogie"
+    },
+    {
+      "url": "/tomes",
+      "text": "Tomes"
+    },
+    {
+      "url": "/auteurs",
+      "text": "Auteurs"
+    }
+  ]
+}

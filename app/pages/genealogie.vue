@@ -24,10 +24,10 @@
                   :key="personne.id"
                   :to="`/entites/${personne.id}`"
                   class="person-card"
-                  :class="{ feminine: personne.espece === 'feminine' }"
+                  :class="{ feminine: personne.gender === 'Féminin' }"
                 >
                   <div class="name">{{ personne.nom }}</div>
-                  <div class="role">{{ personne.espece || personne.type }}</div>
+                  <div class="role">{{ personne.type }}</div>
                 </NuxtLink>
                 <div v-if="generation.length === 2" class="marriage-line" />
               </div>
@@ -59,10 +59,10 @@
                     :key="personne.id"
                     :to="`/entites/${personne.id}`"
                     class="person-card"
-                    :class="{ feminine: personne.espece === 'feminine' }"
+                    :class="{ feminine: personne.gender === 'Féminin' }"
                   >
                     <div class="name">{{ personne.nom }}</div>
-                    <div class="role">{{ personne.espece || personne.type }}</div>
+                    <div class="role">{{ personne.type }}</div>
                   </NuxtLink>
                   <div v-if="groupe.length === 2" class="marriage-line" />
                 </div>

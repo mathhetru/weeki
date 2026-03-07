@@ -17,6 +17,7 @@ export type Entite = {
   tomes?: string[]
   relations?: string[]
   lieu_id?: string
+  gender?: string
 }
 
 export interface EntiteTree {
