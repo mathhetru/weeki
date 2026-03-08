@@ -90,7 +90,6 @@ export default defineNuxtConfig({
           'https://res.cloudinary.com',
           'https://cloud.umami.is',
         ],
-        'img-src': ["'self'", 'data:', 'https://avatars.githubusercontent.com'],
       },
     },
   },
