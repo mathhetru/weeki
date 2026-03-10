@@ -30,13 +30,7 @@
         {{ data.contact.text }}
       </NuxtLink>
 
-      <UDrawer
-        v-model:open="isOpen"
-        direction="right"
-        :handle="false"
-        should-scale-background
-        set-background-color-on-scale
-      >
+      <UDrawer v-model:open="isOpen" direction="right" :handle="false">
         <UButton
           color="neutral"
           variant="ghost"
