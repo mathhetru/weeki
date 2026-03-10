@@ -5,6 +5,20 @@ body {
   font-family: var(--font-main);
   background-color: var(--depth);
   scroll-behavior: smooth;
+  background-image: url('https://res.cloudinary.com/dbihnwsar/image/upload/f_auto,q_auto/v1772911031/EgNIdozXsAEzP9m-protected-intensity-LOW-V2_q1xony.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #f5f0eb;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.92);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .font-heading {

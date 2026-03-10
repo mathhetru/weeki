@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="data"
-    class="mx-auto w-[75%] max-w-7xl flex flex-row gap-4 rounded-4xl bg-white/30 p-10 shadow-lg items-center mt-15 h-150"
+    class="mx-auto w-[75%] max-w-7xl flex flex-row gap-4 backdrop-blur-xs rounded-4xl bg-white/30 p-10 shadow-lg items-center mt-15 h-150"
   >
     <div class="w-[30%] h-full flex flex-col gap-4 text-center justify-center mx-12">
       <h1 class="text-4xl font-heading">{{ data?.hero?.heading }}</h1>

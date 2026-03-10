@@ -9,7 +9,7 @@
           placeholder="Rechercher..."
           class="border px-4 py-2 rounded w-full"
         />
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
           <UButton
             :color="typeFilter === 'tous' ? 'primary' : 'secondary'"
             class="text-white px-4 py-2 rounded"
