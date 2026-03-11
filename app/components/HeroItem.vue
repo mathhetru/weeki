@@ -62,7 +62,7 @@
     if (item === 'genealogie') {
       return '/genealogie'
     }
-    return '#search'
+    return '#weekipedia'
   }
 
   //TODO remove this when all images will be on cloudinary
