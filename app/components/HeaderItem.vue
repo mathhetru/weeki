@@ -40,73 +40,94 @@
     </nav>
   </header>
 
-  <UDrawer v-if="data" v-model:open="isOpen" direction="right" :handle="false" :auto-focus="isOpen">
-    <template #content>
-      <VisuallyHidden>
-        <DialogTitle>Menu de navigation</DialogTitle>
-        <DialogDescription>Menu de navigation mobile</DialogDescription>
-      </VisuallyHidden>
-      <div class="min-w-75 min-h-96 size-full m-4">
-        <UButton
-          color="neutral"
-          variant="ghost"
-          size="xl"
-          trailing-icon="line-md:close"
-          class="pt-4 h-10 w-10 hover:bg-black/10 hover:text-black transition-colors"
-          @click="closeDrawer()"
-        />
-        <div class="flex flex-col items-center text-l gap-12 pt-12">
-          <NuxtLink
-            :to="data.title.link"
-            :aria-label="data.title.ariaLabel"
-            class="font-heading text-2xl flex items-center gap-2"
-            @click="closeDrawer()"
-          >
-            <UIcon name="fluent-emoji-high-contrast:leaf-fluttering-in-wind" />
-            {{ data.title.text }}
-          </NuxtLink>
+  <Teleport v-if="data" to="body">
+    <Transition name="fade">
+      <div
+        v-if="isOpen"
+        class="fixed inset-0 bg-black/30 z-50 backdrop-blur-sm"
+        @click="closeDrawer"
+      />
+    </Transition>
+
+    <Transition name="slide">
+      <div
+        v-if="isOpen"
+        class="fixed top-0 right-0 h-full w-75 bg-white z-50 shadow-xl p-6 flex flex-col gap-8"
+      >
+        <button
+          class="self-end h-10 w-10 flex items-center justify-center rounded-md hover:bg-black/10 transition-colors"
+          @click="closeDrawer"
+        >
+          <UIcon name="line-md:close" class="text-2xl" />
+        </button>
+
+        <NuxtLink
+          :to="data.title.link"
+          class="font-heading text-2xl flex items-center gap-2"
+          @click="closeDrawer"
+        >
+          <UIcon name="fluent-emoji-high-contrast:leaf-fluttering-in-wind" />
+          {{ data.title.text }}
+        </NuxtLink>
+
+        <nav class="flex flex-col gap-6 text-lg">
           <NuxtLink
             v-for="page in data.pages"
             :key="page.text"
             :to="page.link"
-            :aria-label="page.text"
-            class="w-full text-center text-l"
-            @click="closeDrawer()"
+            class="w-full text-center"
+            @click="closeDrawer"
           >
             {{ page.text }}
           </NuxtLink>
-          <NuxtLink
-            :to="data.contact.link"
-            :aria-label="data.contact.ariaLabel"
-            class="flex items-center w-full rounded-full bg-black hover:bg-gray-600 transition-colors"
-            @click="closeDrawer()"
-          >
-            <p class="text-white text-l mx-6 my-2 w-full text-center">
-              {{ data.contact.text }}
-            </p>
-          </NuxtLink>
-        </div>
+        </nav>
+
+        <NuxtLink
+          :to="data.contact.link"
+          class="mt-auto rounded-full bg-black text-white text-center py-2 px-4 hover:bg-gray-600 transition-colors"
+          @click="closeDrawer"
+        >
+          {{ data.contact.text }}
+        </NuxtLink>
       </div>
-    </template>
-  </UDrawer>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
-  import { DialogTitle, DialogDescription, VisuallyHidden } from 'reka-ui'
   const { data } = await useAsyncData('header', () => queryCollection('header').first())
 
   const isOpen = ref(false)
 
-  const openDrawer = (e: MouseEvent) => {
-    ;(e.currentTarget as HTMLElement).blur()
-    isOpen.value = true
-  }
-
   const closeDrawer = () => {
     isOpen.value = false
+  }
+
+  const openDrawer = () => {
+    isOpen.value = true
   }
 
   defineShortcuts({
     o: () => (isOpen.value = !isOpen.value),
   })
 </script>
+
+<style lang="css">
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: transform 0.3s ease;
+  }
+  .slide-enter-from,
+  .slide-leave-to {
+    transform: translateX(100%);
+  }
+</style>
