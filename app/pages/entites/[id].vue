@@ -14,7 +14,7 @@
         <UIcon name="gg:gender-male" />
       </div>
       <p class="capitalize">{{ entite.type }}</p>
-      <p>Description : {{ entite.description }}</p>
+      <p class="whitespace-pre-line">{{ entite.description }}</p>
       <p v-if="entite.vivant">Espèce vivante</p>
       <p v-if="entite.dangereux">Espèce dangeureuse</p>
       <p v-if="entite.hostile">Espèce hostile</p>

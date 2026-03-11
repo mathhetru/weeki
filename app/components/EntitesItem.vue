@@ -3,7 +3,7 @@
     v-for="entite in props.entites"
     :key="entite.id"
     :to="formateLink(entite.id)"
-    class="border rounded-lg p-4 hover:shadow-lg hover:bg-white transition flex gap-2"
+    class="border rounded-lg p-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
   >
     <div v-if="entite.image_url" class="w-20 h-20 rounded-full overflow-hidden shrink-0">
       <NuxtImg

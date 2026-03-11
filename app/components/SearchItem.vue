@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="weekipedia" class="pt-30 mb-10 max-w-7xl mx-auto">
-      <h1 class="font-heading text-5xl mb-6">Encyclopédie</h1>
+      <h1 class="font-heading text-5xl mb-6">Wëekipedia</h1>
       <div class="mb-6 space-y-4">
         <input
           v-model="searchValue"
@@ -9,7 +9,7 @@
           placeholder="Rechercher..."
           class="border px-4 py-2 rounded w-full"
         />
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
           <UButton
             :color="typeFilter === 'tous' ? 'primary' : 'secondary'"
             class="text-white px-4 py-2 rounded"
