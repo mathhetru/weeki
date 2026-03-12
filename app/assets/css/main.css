@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
+@import './color/gold.css';
 
 body {
   font-family: var(--font-main);
@@ -28,13 +29,14 @@ body::before {
 @layer base {
   :root {
     /* Couleurs */
-    --ui-primary: var(--color-indigo-900);
-    --ui-secondary: var(--color-indigo-400);
+    --ui-primary: #bb8f36;
+    --ui-secondary: #d0b173;
+    --ui-tertiary: #fcf6ba;
     --depth: var(--color-slate-200);
-    --ui-success: var(--color-indigo-900);
-    --ui-info: var(--ui-color-teal-500);
-    --ui-warning: var(--ui-color-rose-500);
-    --ui-error: var(--ui-color-red-700);
+    --ui-success: #bf953f;
+    --ui-info: var(--ui-color-amber-900);
+    --ui-warning: var(--ui-color-orange-500);
+    --ui-error: var(--ui-color-red-800);
 
     /* Spacing */
     --spacing-sm: 0.5rem;

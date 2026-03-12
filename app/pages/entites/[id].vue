@@ -1,6 +1,6 @@
 <template>
   <!-- TODO add breadcrumbs -->
-  <div class="mx-auto w-full max-w-6xl mb-20 mt-10">
+  <div class="mx-auto w-[90vw] max-w-6xl mb-20 mt-10">
     <p v-if="pending">Chargement...</p>
     <div v-else-if="entite" class="flex flex-col gap-1.5">
       <div
@@ -13,7 +13,7 @@
             provider="cloudinary"
             src="/v1773168876/branche_morte_v9wcfk.webp"
             :alt="`Branche ${entite.nom}`"
-            class="absolute w-[55%] -top-23 -right-10"
+            class="absolute w-[40%] -top-15 -right-5"
           />
           <NuxtImg
             v-if="entite.tags?.some((tag) => tag.toLowerCase().includes('la branche invisible'))"
@@ -21,7 +21,7 @@
             provider="cloudinary"
             src="/v1773168876/branche_invisible_nru8f7.webp"
             :alt="`Branche ${entite.nom}`"
-            class="absolute w-[45%] -top-15 -right-10"
+            class="absolute w-[35%] -top-15 -right-5"
           />
           <NuxtImg
             v-if="entite.tags?.some((tag) => tag.toLowerCase().includes('la branche maîtresse'))"
@@ -60,7 +60,7 @@
           provider="cloudinary"
           :src="entite.image_url"
           :alt="`Image de${entite.nom}`"
-          class="w-60 h-auto rounded-full object-cover z-10"
+          class="w-60 h-auto rounded-full object-cover"
         />
       </div>
       <div class="px-10 py-5">
