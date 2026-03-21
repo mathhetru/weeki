@@ -7,40 +7,40 @@
           v-model="searchValue"
           type="text"
           placeholder="Rechercher..."
-          class="border px-4 py-2 rounded w-full"
+          class="border border-primary px-4 py-2 rounded w-full"
         />
         <div class="flex flex-wrap gap-2">
           <UButton
             :color="typeFilter === 'tous' ? 'primary' : 'secondary'"
-            class="text-white px-4 py-2 rounded"
+            class="text-white px-4 py-2 rounded cursor-pointer"
             @click="addTypeFilter('tous')"
           >
             Tous
           </UButton>
           <UButton
             :color="typeFilter === 'personnage' ? 'primary' : 'secondary'"
-            class="text-white px-4 py-2 rounded"
+            class="text-white px-4 py-2 rounded cursor-pointer"
             @click="addTypeFilter('personnage')"
           >
             Personnages
           </UButton>
           <UButton
             :color="typeFilter === 'lieu' ? 'primary' : 'secondary'"
-            class="text-white px-4 py-2 rounded"
+            class="text-white px-4 py-2 rounded cursor-pointer"
             @click="addTypeFilter('lieu')"
           >
             Lieux
           </UButton>
           <UButton
             :color="typeFilter === 'creature' ? 'primary' : 'secondary'"
-            class="text-white px-4 py-2 rounded"
+            class="text-white px-4 py-2 rounded cursor-pointer"
             @click="addTypeFilter('creature')"
           >
             Créatures
           </UButton>
           <UButton
             :color="typeFilter === 'peuple' ? 'primary' : 'secondary'"
-            class="text-white px-4 py-2 rounded"
+            class="text-white px-4 py-2 rounded cursor-pointer"
             @click="addTypeFilter('peuple')"
           >
             Peuples
@@ -81,7 +81,7 @@
       <UIcon
         v-if="isLoading"
         name="i-heroicons-arrow-path"
-        class="w-8 mb-10 animate-spin text-primary"
+        class="w-8 mb-10 animate-spin text-primary text-4xl"
       />
     </div>
   </div>

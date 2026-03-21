@@ -3,7 +3,7 @@
     v-for="entite in props.entites"
     :key="entite.id"
     :to="formateLink(entite.id)"
-    class="border rounded-lg p-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
+    class="border border-primary rounded-lg p-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
   >
     <div v-if="entite.image_url" class="w-20 h-20 rounded-full overflow-hidden shrink-0">
       <NuxtImg
@@ -16,16 +16,16 @@
     </div>
     <div class="flex w-full flex-col justify-between">
       <div class="flex justify-between items-start mb-2">
-        <h3 class="font-bold text-lg">{{ entite.nom }}</h3>
-        <span class="text-xs bg-indigo-400 text-white px-2 py-1 rounded">
+        <h3 class="font-bold text-lg text-black leading-none">{{ entite.nom }}</h3>
+        <span class="text-xs bg-secondary text-white px-2 py-1 rounded">
           {{ entite.type }}
         </span>
       </div>
 
       <div v-if="entite.description">
-        <p class="text-gray-600 text-sm mb-3">
-          {{ entite.description?.substring(0, 60) }}...
-          <a href="#" class="font-bold text-indigo-900 hover:text-indigo-400">Lire la suite</a>
+        <p class="text-gray-600 text-sm mb-3 leading-4">
+          {{ entite.description?.substring(0, 50) }}...
+          <a href="#" class="font-bold text-primary hover:text-secondary">Lire la suite</a>
         </p>
       </div>
 
@@ -33,7 +33,7 @@
         <span
           v-for="tag in entite.tags"
           :key="tag"
-          class="text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded"
+          class="text-xs bg-gray-300 text-black px-2 py-1 rounded"
         >
           {{ tag }}
         </span>
