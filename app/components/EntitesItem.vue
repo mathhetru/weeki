@@ -16,15 +16,15 @@
     </div>
     <div class="flex w-full flex-col justify-between">
       <div class="flex justify-between items-start mb-2">
-        <h3 class="font-bold text-lg text-black">{{ entite.nom }}</h3>
+        <h3 class="font-bold text-lg text-black leading-none">{{ entite.nom }}</h3>
         <span class="text-xs bg-secondary text-white px-2 py-1 rounded">
           {{ entite.type }}
         </span>
       </div>
 
       <div v-if="entite.description">
-        <p class="text-gray-600 text-sm mb-3">
-          {{ entite.description?.substring(0, 60) }}...
+        <p class="text-gray-600 text-sm mb-3 leading-4">
+          {{ entite.description?.substring(0, 50) }}...
           <a href="#" class="font-bold text-primary hover:text-secondary">Lire la suite</a>
         </p>
       </div>

@@ -81,7 +81,7 @@
       <UIcon
         v-if="isLoading"
         name="i-heroicons-arrow-path"
-        class="w-8 mb-10 animate-spin text-primary"
+        class="w-8 mb-10 animate-spin text-primary text-4xl"
       />
     </div>
   </div>

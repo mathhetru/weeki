@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="data"
-    class="mx-auto w-[90vw] lg:w-[75%] max-w-7xl flex flex-col lg:flex-row gap-4 backdrop-blur-xs rounded-4xl bg-white/30 p-5 sm:p-10 shadow-lg items-center"
+    class="mx-auto w-full sm:w-[70%] lg:w-[75%] max-w-7xl flex flex-col lg:flex-row gap-4 backdrop-blur-xs rounded-4xl bg-white/30 p-5 sm:p-10 shadow-lg items-center"
   >
     <div
       class="w-full sm:w-[80%] lg:w-[30%] flex flex-col gap-4 text-center justify-center lg:mx-12 py-6 lg:py-0 lg:h-150"
@@ -12,7 +12,7 @@
       <p>{{ data?.hero?.description }}</p>
     </div>
     <div
-      class="w-full sm:w-[80%] lg:w-[70%] grid grid-rows-2 grid-cols-3 gap-3 lg:gap-6 h-80 sm:h-100 lg:h-150"
+      class="w-full md:w-[65%] lg:w-[70%] grid grid-rows-2 grid-cols-3 gap-3 lg:gap-6 h-80 sm:h-100 lg:h-150"
     >
       <NuxtLink
         v-for="(feature, index) in data.features"
@@ -33,7 +33,7 @@
         <div
           class="absolute inset-x-0 top-0 h-16 lg:h-30 bg-linear-to-b from-black/70 to-transparent z-10"
         />
-        <h3 class="absolute z-20 text-white p-2 lg:p-6 text-xs lg:text-lg drop-shadow-lg">
+        <h3 class="absolute z-20 text-white p-4 lg:p-6 text-xs lg:text-lg drop-shadow-lg">
           {{ feature?.title }}
         </h3>
       </NuxtLink>
