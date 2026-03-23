@@ -17,7 +17,7 @@
     <div class="flex w-full flex-col justify-between">
       <div class="flex justify-between items-start mb-2">
         <h3 class="font-bold text-lg text-black leading-none">{{ entite.nom }}</h3>
-        <span class="text-xs bg-secondary text-white px-2 py-1 rounded">
+        <span class="text-xs bg-secondary text-white px-2 py-1 rounded capitalize">
           {{ entite.type }}
         </span>
       </div>

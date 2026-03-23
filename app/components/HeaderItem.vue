@@ -1,7 +1,7 @@
 <template>
   <header
     v-if="data"
-    class="fixed inset-x-0 w-[90vw] mx-auto bg-white/70 md:bg-white/50 rounded-full mt-4 backdrop-blur-xs z-50 shadow-lg"
+    class="fixed inset-x-0 w-[90vw] mx-auto bg-white/75 md:bg-white/50 rounded-full mt-4 backdrop-blur-xs z-50 shadow-lg"
   >
     <nav class="flex items-center justify-between p-4">
       <NuxtLink

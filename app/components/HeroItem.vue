@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="data"
-    class="mx-auto w-full sm:w-[70%] lg:w-[75%] max-w-7xl flex flex-col lg:flex-row gap-4 backdrop-blur-xs rounded-4xl bg-white/30 p-5 sm:p-10 shadow-lg items-center"
+    class="mx-auto w-full sm:w-[70%] lg:w-[75%] max-w-7xl flex flex-col lg:flex-row gap-4 backdrop-blur-xs rounded-4xl bg-white/30 p-10 shadow-lg items-center"
   >
     <div
       class="w-full sm:w-[80%] lg:w-[30%] flex flex-col gap-4 text-center justify-center lg:mx-12 py-6 lg:py-0 lg:h-150"
@@ -53,11 +53,11 @@
   const getGridClass = (index: number) => {
     const baseClass = 'relative rounded-3xl overflow-hidden'
     const gridClasses: Record<number, string> = {
-      0: 'row-span-1 col-start-1 row-start-1 mt-24',
+      0: 'row-span-1 col-start-1 row-start-1 sm:mt-24 mt-12',
       1: 'row-span-3 col-start-2 row-start-1',
-      2: 'row-span-1 col-start-3 row-start-1 mt-24',
-      3: 'row-span-2 col-start-1 row-start-2 mb-24',
-      4: 'row-span-1 col-start-3 row-start-2 mb-24',
+      2: 'row-span-1 col-start-3 row-start-1 sm:mt-24 mt-12',
+      3: 'row-span-2 col-start-1 row-start-2 sm:mb-24 mb-12',
+      4: 'row-span-1 col-start-3 row-start-2 sm:mb-24 mb-12',
     }
     return `${baseClass} ${gridClasses[index] || ''}`
   }
