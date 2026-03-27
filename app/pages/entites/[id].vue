@@ -4,7 +4,7 @@
     <p v-if="pending">Chargement...</p>
     <div v-else-if="entite" class="flex flex-col gap-1.5">
       <div
-        class="flex flex-row justify-between items-center gap-1.5 bg-white/50 px-10 py-8 rounded-lg relative"
+        class="flex flex-row justify-between items-center gap-1.5 bg-white/60 px-10 py-8 rounded-lg relative shrink-0"
       >
         <div class="flex flex-col gap-3">
           <NuxtImg
@@ -29,7 +29,7 @@
             provider="cloudinary"
             src="/v1773168876/branche_maitresse_xt0tvy.webp"
             :alt="`Branche ${entite.nom}`"
-            class="absolute w-[40%] -top-15 -right-10"
+            class="absolute w-[25%] -top-15 -right-10"
           />
           <h1 class="text-4xl font-heading mb-4">{{ entite.nom }}</h1>
           <div
@@ -47,21 +47,22 @@
           <p class="capitalize">{{ entite.type }}</p>
           <p v-if="entite.vivant">Espèce vivante</p>
           <p v-if="entite.dangereux">Espèce dangeureuse</p>
-          <p v-if="entite.hostile">Espèce hostile</p>
           <div v-if="entite.tomes" class="flex flex-row gap-1.5">
             <p v-if="entite.tomes.length > 1">Apparait dans les :</p>
             <p v-if="entite.tomes.length == 1">Apparait dans le :</p>
             <p v-for="(tome, index) in entite.tomes" :key="index">Tome {{ tome }}</p>
           </div>
         </div>
-        <NuxtImg
-          v-if="entite.image_url"
-          format="webp"
-          provider="cloudinary"
-          :src="entite.image_url"
-          :alt="`Image de${entite.nom}`"
-          class="w-60 h-auto rounded-full object-cover"
-        />
+        <div class="w-60 h-60 rounded-full overflow-hidden shrink-0">
+          <NuxtImg
+            v-if="entite.image_url"
+            format="webp"
+            provider="cloudinary"
+            :src="entite.image_url"
+            :alt="`Image de${entite.nom}`"
+            class="h-full w-full object-cover"
+          />
+        </div>
       </div>
       <div class="px-10 py-5">
         <p class="whitespace-pre-line">{{ entite.description }}</p>
