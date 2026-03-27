@@ -12,6 +12,7 @@ export const useEntitesStore = defineStore('entites', () => {
   const currentPage = ref(1)
   const hasMore = ref(true)
   const tree = ref<EntiteTree[][][]>([])
+  const isOpenDrawer = ref(false)
 
   const getEntites = async () => {
     if (!hasMore.value) return
@@ -132,5 +133,6 @@ export const useEntitesStore = defineStore('entites', () => {
     getEntitesOnTree,
     resetFilters,
     hasMore,
+    isOpenDrawer,
   }
 })

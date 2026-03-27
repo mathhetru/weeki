@@ -7,13 +7,13 @@ export type Entite = {
   created_at: string
   nom: string
   type: EntiteType
+  type2?: string
   description?: string
   image_url?: string
   tags?: string[]
   espece?: string
   vivant?: boolean
   dangereux?: boolean
-  hostile?: boolean
   tomes?: string[]
   relations?: string[]
   lieu_id?: string
