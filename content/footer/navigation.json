@@ -1,4 +1,15 @@
 {
+  "copyright": "- Weena et la légende de Noor. Tous droits réservés.",
+  "legalLinks": [
+    {
+      "url": "/mentions-legales",
+      "text": "Mentions légales"
+    },
+    {
+      "url": "/politique-de-confidentialite",
+      "text": "Politique de confidentialité"
+    }
+  ],
   "links": [    
     {
       "url": "/",
@@ -15,6 +26,10 @@
     {
       "url": "/auteurs",
       "text": "Auteurs"
+    },
+    {
+      "url": "/qui-sommes-nous",
+      "text": "Qui sommes-nous ?"
     }
   ]
 }

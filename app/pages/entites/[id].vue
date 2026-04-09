@@ -1,40 +1,76 @@
 <template>
   <!-- TODO add breadcrumbs -->
-  <div class="mx-auto w-[75%] max-w-7xl">
+  <div class="mx-auto w-[90vw] max-w-6xl mb-20 mt-10">
     <p v-if="pending">Chargement...</p>
     <div v-else-if="entite" class="flex flex-col gap-1.5">
-      <h1 class="text-4xl font-heading mb-4">{{ entite.nom }}</h1>
-      <div v-if="entite.gender === 'Féminin'" class="text-2xl font-bold flex items-center gap-1.5">
-        <UIcon name="gg:gender-female" />
-      </div>
       <div
-        v-else-if="entite.gender === 'Masculin'"
-        class="text-2xl font-bold flex items-center gap-1.5"
+        class="flex flex-row justify-between items-center gap-1.5 bg-white/60 px-10 py-8 rounded-lg relative shrink-0"
       >
-        <UIcon name="gg:gender-male" />
+        <div class="flex flex-col gap-3">
+          <NuxtImg
+            v-if="entite.tags?.some((tag) => tag.toLowerCase().includes('la branche morte'))"
+            format="webp"
+            provider="cloudinary"
+            src="/v1773168876/branche_morte_v9wcfk.webp"
+            :alt="`Branche ${entite.nom}`"
+            class="absolute w-[40%] -top-15 -right-5"
+          />
+          <NuxtImg
+            v-if="entite.tags?.some((tag) => tag.toLowerCase().includes('la branche invisible'))"
+            format="webp"
+            provider="cloudinary"
+            src="/v1773168876/branche_invisible_nru8f7.webp"
+            :alt="`Branche ${entite.nom}`"
+            class="absolute w-[35%] -top-15 -right-5"
+          />
+          <NuxtImg
+            v-if="entite.tags?.some((tag) => tag.toLowerCase().includes('la branche maîtresse'))"
+            format="webp"
+            provider="cloudinary"
+            src="/v1773168876/branche_maitresse_xt0tvy.webp"
+            :alt="`Branche ${entite.nom}`"
+            class="absolute w-[25%] -top-15 -right-10"
+          />
+          <h1 class="text-4xl font-heading mb-4">{{ entite.nom }}</h1>
+          <div
+            v-if="entite.gender === 'Féminin'"
+            class="text-2xl font-bold flex items-center gap-1.5"
+          >
+            <UIcon name="gg:gender-female" />
+          </div>
+          <div
+            v-else-if="entite.gender === 'Masculin'"
+            class="text-2xl font-bold flex items-center gap-1.5"
+          >
+            <UIcon name="gg:gender-male" />
+          </div>
+          <p class="capitalize">{{ entite.type }}</p>
+          <p v-if="entite.vivant">Espèce vivante</p>
+          <p v-if="entite.dangereux">Espèce dangeureuse</p>
+          <div v-if="entite.tomes" class="flex flex-row gap-1.5">
+            <p v-if="entite.tomes.length > 1">Apparait dans les :</p>
+            <p v-if="entite.tomes.length == 1">Apparait dans le :</p>
+            <p v-for="(tome, index) in entite.tomes" :key="index">Tome {{ tome }}</p>
+          </div>
+        </div>
+        <div class="w-60 h-60 rounded-full overflow-hidden shrink-0">
+          <NuxtImg
+            v-if="entite.image_url"
+            format="webp"
+            provider="cloudinary"
+            :src="entite.image_url"
+            :alt="`Image de${entite.nom}`"
+            class="h-full w-full object-cover"
+          />
+        </div>
       </div>
-      <p class="capitalize">{{ entite.type }}</p>
-      <p class="whitespace-pre-line">{{ entite.description }}</p>
-      <p v-if="entite.vivant">Espèce vivante</p>
-      <p v-if="entite.dangereux">Espèce dangeureuse</p>
-      <p v-if="entite.hostile">Espèce hostile</p>
-      <div v-if="entite.tomes" class="flex flex-row gap-1.5">
-        <p v-if="entite.tomes.length > 1">Apparait dans les :</p>
-        <p v-if="entite.tomes.length == 1">Apparait dans le :</p>
-        <p v-for="(tome, index) in entite.tomes" :key="index">Tome {{ tome }}</p>
+      <div class="px-10 py-5">
+        <p class="whitespace-pre-line">{{ entite.description }}</p>
       </div>
       <p v-for="(relation, index) in entite.relations" :key="index">
         {{ relation }}
       </p>
       <p v-if="entite.lieu_id">Lieu : {{ entite.lieu_id }}</p>
-      <NuxtImg
-        v-if="entite.image_url"
-        format="webp"
-        provider="cloudinary"
-        :src="entite.image_url"
-        :alt="`Image de${entite.nom}`"
-        class="w-75 h-auto rounded-lg object-cover"
-      />
     </div>
     <div v-else-if="error">"Entitée non trouvée !"</div>
     <UButton

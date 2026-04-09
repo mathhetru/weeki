@@ -30,9 +30,16 @@ export default defineContentConfig({
       type: 'data',
       source: 'footer/navigation.json',
       schema: z.object({
+        copyright: z.string(),
+        legalLinks: z.array(
+          z.object({
+            text: z.string(),
+            url: z.string(),
+          })
+        ),
         links: z.array(
           z.object({
-            name: z.string(),
+            text: z.string(),
             url: z.string(),
           })
         ),
