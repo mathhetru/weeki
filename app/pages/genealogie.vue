@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="pt-15 max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto">
       <h1 class="text-5xl mb-6 font-heading">Généalogie</h1>
       <h2 class="text-1xl mb-6">Retrouvez les arbres généalogiques des personnages principaux</h2>
     </div>
