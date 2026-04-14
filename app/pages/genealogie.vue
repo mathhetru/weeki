@@ -6,7 +6,7 @@
     </div>
 
     <div class="w-full h-full bg-white/20 backdrop-blur-xs rounded-4xl py-10 shadow-lg">
-      <div class="w-360 mx-auto">
+      <div class="mx-auto">
         <div v-if="isLoading" class="flex justify-center py-20">
           <UIcon name="i-heroicons-arrow-path" class="w-12 h-12 animate-spin text-primary" />
         </div>
