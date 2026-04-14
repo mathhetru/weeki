@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full grid grid-cols-1 grid-row-3 gap-4">
+  <div class="w-full grid grid-cols-1 grid-row-3 gap-4 gap-y-15">
     <div
       v-for="(couple, index) in branch"
       :key="index"

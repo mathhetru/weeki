@@ -3,7 +3,7 @@
     v-for="entite in couple"
     :key="entite.id"
     :to="`/entites/${entite.id}`"
-    class="border border-primary rounded-lg p-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
+    class="border border-primary rounded-lg px-2.5 py-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
     :class="[`col-start-${entite.place}`, couple.length === 1 ? 'w-1/2' : 'w-full']"
   >
     <div v-if="entite.image_url" class="w-15 h-15 rounded-full overflow-hidden shrink-0">
