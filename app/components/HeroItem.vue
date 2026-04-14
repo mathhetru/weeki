@@ -24,7 +24,8 @@
       >
         <div class="absolute inset-0 overflow-hidden">
           <NuxtImg
-            :provider="providerToUse(feature?.img)"
+            provider="cloudinary"
+            format="webp"
             :src="feature?.img"
             :alt="`Image de ${feature?.title}`"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -76,6 +77,4 @@
     }
     return '#weekipedia'
   }
-
-  const providerToUse = (img: string) => (img.includes('/images/') ? undefined : 'cloudinary')
 </script>
