@@ -18,45 +18,18 @@
         <div v-else-if="tree" class="flex flex-col items-center gap-8 scroll-auto">
           <div class="w-full">
             <!-- premier bloc : SOUCHE -->
-            <h3 class="text-center text-2xl font-bold mb-4">La Souche</h3>
-            <div class="grid grid-cols-6 gap-4">
-              <NuxtLink
-                v-for="entite in souche"
-                :key="entite.id"
-                :to="`/entites/${entite.id}`"
-                class="border border-primary rounded-lg p-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
-                :class="`col-start-${entite.place}`"
-              >
-                <div
-                  v-if="entite.image_url"
-                  class="w-20 h-20 rounded-full overflow-hidden shrink-0"
-                >
-                  <NuxtImg
-                    format="webp"
-                    provider="cloudinary"
-                    :src="entite.image_url"
-                    :alt="`Image de${entite.nom}`"
-                    class="object-cover w-full h-full"
-                  />
-                </div>
-                <div class="flex w-full flex-col justify-between">
-                  <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-black leading-none">{{ entite.nom }}</h3>
-                  </div>
-                  <div
-                    v-if="entite.gender === 'Féminin'"
-                    class="text-2xl font-bold flex items-center gap-1.5"
-                  >
-                    <UIcon name="gg:gender-female" />
-                  </div>
-                  <div
-                    v-else-if="entite.gender === 'Masculin'"
-                    class="text-2xl font-bold flex items-center gap-1.5"
-                  >
-                    <UIcon name="gg:gender-male" />
-                  </div>
-                </div>
-              </NuxtLink>
+            <h3 class="text-center font-heading text-3xl mb-4">La Souche</h3>
+            <div class="grid grid-cols-6 gap-4 relative">
+              <CardGenealogiePage :couple="souche" />
+              <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-px w-4 bg-primary pointer-events-none"
+              />
+              <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 h-16 w-px bg-primary pointer-events-none"
+              />
+              <div
+                class="absolute left-1/2 top-27.5 -translate-x-1/2 h-px w-[85%] bg-primary pointer-events-none"
+              />
             </div>
           </div>
           <div class="w-full flex flex-row justify-between gap-4">

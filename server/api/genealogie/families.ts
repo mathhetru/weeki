@@ -32,11 +32,17 @@ export default defineEventHandler(async (event) => {
     branches: {
       invisible: [
         // Génération 1 : Parents
-        [{ ...findByName('Noor') }, { ...findByName('Brunilla') }].filter((p) => p?.id),
+        [
+          { ...findByName('Noor'), place: '1' },
+          { ...findByName('Brunilla'), place: '2' },
+        ].filter((p) => p?.id),
         // Génération 2 : Enfants
-        [{ ...findByName('Galdec') }, { ...findByName('Kheëna') }].filter((p) => p?.id),
+        [
+          { ...findByName('Galdec'), place: '1' },
+          { ...findByName('Kheëna'), place: '2' },
+        ].filter((p) => p?.id),
         // Génération 3 : Petits-enfants
-        [{ ...findByName('Weëna') }].filter((p) => p?.id),
+        [{ ...findByName('Weëna'), place: '1' }].filter((p) => p?.id),
       ],
 
       maitresse: [
@@ -45,16 +51,25 @@ export default defineEventHandler(async (event) => {
           { ...findByName('Naounë'), place: '2' },
         ].filter((p) => p?.id),
         [
-          { ...findByName("Ot'Skoor"), place: '3' },
-          { ...findByName('Eda'), place: '4' },
+          { ...findByName("Ot'Skoor"), place: '1' },
+          { ...findByName('Eda'), place: '2' },
         ].filter((p) => p?.id),
-        [{ ...findByName('Armskoor'), place: '5' }].filter((p) => p?.id),
+        [{ ...findByName('Armskoor'), place: '1' }].filter((p) => p?.id),
       ],
 
       morte: [
-        [{ ...findByName('Tengoor') }, { ...findByName('Golja') }].filter((p) => p?.id),
-        [{ ...findByName("Ot'Tengoor") }, { ...findByName('Queënzy') }].filter((p) => p?.id),
-        [{ ...findByName('Morckoor') }, { ...findByName('Olja') }].filter((p) => p?.id),
+        [
+          { ...findByName('Tengoor'), place: '1' },
+          { ...findByName('Golja'), place: '2' },
+        ].filter((p) => p?.id),
+        [
+          { ...findByName("Ot'Tengoor"), place: '1' },
+          { ...findByName('Queënzy'), place: '2' },
+        ].filter((p) => p?.id),
+        [
+          { ...findByName('Morckoor'), place: '1' },
+          { ...findByName('Olja'), place: '2' },
+        ].filter((p) => p?.id),
       ],
     },
   }
