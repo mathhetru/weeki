@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { Entite } from '../types/database.types'
+  import type { Entite } from '../types/entites.types'
 
   const props = defineProps<{
     entites: Entite[]

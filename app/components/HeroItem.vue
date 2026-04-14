@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
   import { useEntitesStore } from '../stores/entites.store'
-  import type { typeFilter } from '../types/database.types'
+  import type { typeFilter } from '../types/entites.types'
 
   const entitesStore = useEntitesStore()
 

@@ -88,7 +88,7 @@
   import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue'
   import { useEntitesStore } from '../stores/entites.store'
   import EntitesItem from './EntitesItem.vue'
-  import type { typeFilter } from '../types/database.types'
+  import type { typeFilter } from '../types/entites.types'
   import { storeToRefs } from 'pinia'
 
   const entitesStore = useEntitesStore()

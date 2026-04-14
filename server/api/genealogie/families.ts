@@ -21,28 +21,28 @@ export default defineEventHandler(async (event) => {
 
   return {
     // Souche = génération 0
-    souche: [[{ ...findByName('Zaboor') }, { ...findByName('Toolja') }].filter((p) => p?.id)],
+    souche: [{ ...findByName('Zaboor') }, { ...findByName('Toolja') }].filter((p) => p?.id),
 
     branches: {
       invisible: [
         // Génération 1 : Parents
-        [[{ ...findByName('Noor') }, { ...findByName('Brunilla') }].filter((p) => p?.id)],
+        [{ ...findByName('Noor') }, { ...findByName('Brunilla') }].filter((p) => p?.id),
         // Génération 2 : Enfants
-        [[{ ...findByName('Galdec') }, { ...findByName('Kheëna') }].filter((p) => p?.id)],
+        [{ ...findByName('Galdec') }, { ...findByName('Kheëna') }].filter((p) => p?.id),
         // Génération 3 : Petits-enfants
-        [[{ ...findByName('Weëna') }].filter((p) => p?.id)],
+        [{ ...findByName('Weëna') }].filter((p) => p?.id),
       ],
 
       maitresse: [
-        [[{ ...findByName('Skoor') }, { ...findByName('Naounë') }].filter((p) => p?.id)],
-        [[{ ...findByName("Ot'Skoor") }, { ...findByName('Eda') }].filter((p) => p?.id)],
-        [[{ ...findByName('Armskoor') }].filter((p) => p?.id)],
+        [{ ...findByName('Skoor') }, { ...findByName('Naounë') }].filter((p) => p?.id),
+        [{ ...findByName("Ot'Skoor") }, { ...findByName('Eda') }].filter((p) => p?.id),
+        [{ ...findByName('Armskoor') }].filter((p) => p?.id),
       ],
 
       morte: [
-        [[{ ...findByName('Tengoor') }, { ...findByName('Golja') }].filter((p) => p?.id)],
-        [[{ ...findByName("Ot'Tengoor") }, { ...findByName('Queënzy') }].filter((p) => p?.id)],
-        [[{ ...findByName('Morckoor') }, { ...findByName('Olja') }].filter((p) => p?.id)],
+        [{ ...findByName('Tengoor') }, { ...findByName('Golja') }].filter((p) => p?.id),
+        [{ ...findByName("Ot'Tengoor") }, { ...findByName('Queënzy') }].filter((p) => p?.id),
+        [{ ...findByName('Morckoor') }, { ...findByName('Olja') }].filter((p) => p?.id),
       ],
     },
   }
