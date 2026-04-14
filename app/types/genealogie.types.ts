@@ -3,6 +3,8 @@ export type EntiteOnTree = {
   nom: string
   type: string
   gender: string
+  image_url?: string
+  place?: string
 }
 
 export type Branch = {

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const { data: personnages, error } = await supabase
     .from('entites')
-    .select('id, nom, gender, type')
+    .select('id, nom, gender, type, image_url')
     .eq('type', 'personnage')
 
   if (error) {
@@ -21,7 +21,13 @@ export default defineEventHandler(async (event) => {
 
   return {
     // Souche = génération 0
-    souche: [{ ...findByName('Zaboor') }, { ...findByName('Toolja') }].filter((p) => p?.id),
+    souche: [
+      { ...findByName('Zaboor'), place: '3' },
+      {
+        ...findByName('Toolja'),
+        place: '4',
+      },
+    ].filter((p) => p?.id),
 
     branches: {
       invisible: [
@@ -34,9 +40,15 @@ export default defineEventHandler(async (event) => {
       ],
 
       maitresse: [
-        [{ ...findByName('Skoor') }, { ...findByName('Naounë') }].filter((p) => p?.id),
-        [{ ...findByName("Ot'Skoor") }, { ...findByName('Eda') }].filter((p) => p?.id),
-        [{ ...findByName('Armskoor') }].filter((p) => p?.id),
+        [
+          { ...findByName('Skoor'), place: '1' },
+          { ...findByName('Naounë'), place: '2' },
+        ].filter((p) => p?.id),
+        [
+          { ...findByName("Ot'Skoor"), place: '3' },
+          { ...findByName('Eda'), place: '4' },
+        ].filter((p) => p?.id),
+        [{ ...findByName('Armskoor'), place: '5' }].filter((p) => p?.id),
       ],
 
       morte: [
