@@ -45,7 +45,7 @@ export default defineContentConfig({
         ),
       }),
     }),
-    pages: defineCollection({
+    home: defineCollection({
       type: 'data',
       source: 'pages/home.json',
       schema: z.object({
@@ -60,6 +60,22 @@ export default defineContentConfig({
             search: z.string(),
             img: z.string(),
             text: z.string(),
+          })
+        ),
+      }),
+    }),
+    auteurs: defineCollection({
+      type: 'data',
+      source: 'pages/auteurs.json',
+      schema: z.object({
+        title: z.string(),
+        subtitle: z.string(),
+        writers: z.array(
+          z.object({
+            name: z.string(),
+            img: z.string(),
+            text: z.string(),
+            slot: z.string(),
           })
         ),
       }),

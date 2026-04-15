@@ -21,9 +21,9 @@
     <div
       class="overflow-hidden text-ellipsis flex w-full flex-col sm:flex-row md:flex-col justify-between"
     >
-      <div class="text-ellipsis flex justify-between items-start mb-2">
+      <div class="flex justify-between items-start mb-2">
         <h3
-          class="text-ellipsis font-bold text-xs lg:text-sm 2xl:text-base text-black leading-none"
+          class="overflow-hidden text-ellipsis font-bold text-xs lg:text-sm 2xl:text-base text-black leading-none"
         >
           {{ entite.nom }}
         </h3>

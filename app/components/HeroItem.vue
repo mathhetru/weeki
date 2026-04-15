@@ -19,7 +19,6 @@
         :key="feature.title"
         :to="searchItem(feature?.search)"
         :class="getGridClass(index)"
-        class="group"
         @click="addTypeFilter(feature?.search as typeFilter)"
       >
         <div class="absolute inset-0 overflow-hidden">
@@ -51,7 +50,7 @@
 
   const entitesStore = useEntitesStore()
 
-  const { data } = await useAsyncData('home-hero', () => queryCollection('pages').first())
+  const { data } = await useAsyncData('home-hero', () => queryCollection('home').first())
 
   const getGridClass = (index: number) => {
     const baseClass = 'relative rounded-lg lg:rounded-2xl overflow-hidden'
