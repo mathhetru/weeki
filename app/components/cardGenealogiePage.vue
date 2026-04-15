@@ -3,10 +3,13 @@
     v-for="entite in props.couple"
     :key="entite.id"
     :to="`/entites/${entite.id}`"
-    class="relative border border-primary rounded-lg px-2.5 py-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
+    class="h-23.5 relative border border-primary rounded-lg px-1 py-2 sm:px-2.5 sm:py-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex flex-col md:flex-row gap-2"
     :class="[`col-start-${entite.place}`, couple.length === 1 ? 'w-1/2' : 'w-full']"
   >
-    <div v-if="entite.image_url" class="w-15 h-15 rounded-full overflow-hidden shrink-0">
+    <div
+      v-if="entite.image_url"
+      class="w-7 h-7 sm:w-10 sm:h-10 lg:w-15 lg:h-15 rounded-full overflow-hidden shrink-0"
+    >
       <NuxtImg
         format="webp"
         provider="cloudinary"
@@ -15,14 +18,26 @@
         class="object-cover w-full h-full"
       />
     </div>
-    <div class="flex w-full flex-col justify-between">
-      <div class="flex justify-between items-start mb-2">
-        <h3 class="font-bold text-md text-black leading-none">{{ entite.nom }}</h3>
+    <div
+      class="overflow-hidden text-ellipsis flex w-full flex-col sm:flex-row md:flex-col justify-between"
+    >
+      <div class="text-ellipsis flex justify-between items-start mb-2">
+        <h3
+          class="text-ellipsis font-bold text-xs lg:text-sm 2xl:text-base text-black leading-none"
+        >
+          {{ entite.nom }}
+        </h3>
       </div>
-      <div v-if="entite.gender === 'Féminin'" class="text-2xl font-bold flex items-center">
+      <div
+        v-if="entite.gender === 'Féminin'"
+        class="text-lg lg:text-2xl font-bold flex items-center"
+      >
         <UIcon name="gg:gender-female" />
       </div>
-      <div v-else-if="entite.gender === 'Masculin'" class="text-2xl font-bold flex items-center">
+      <div
+        v-else-if="entite.gender === 'Masculin'"
+        class="text-lg lg:text-2xl font-bold flex items-center"
+      >
         <UIcon name="gg:gender-male" />
       </div>
     </div>
