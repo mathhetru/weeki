@@ -5,7 +5,7 @@
       <h2 class="text-1xl mb-6">Retrouvez les arbres généalogiques des personnages principaux</h2>
     </div>
 
-    <div class="w-full h-full max-w-7xl mx-auto">
+    <div class="w-full h-full max-w-7xl mx-auto relative">
       <div class="mx-auto">
         <div v-if="isLoading" class="flex justify-center py-20">
           <UIcon name="i-heroicons-arrow-path" class="w-12 h-12 animate-spin text-primary" />
@@ -15,7 +15,7 @@
           Erreur lors du chargement de l'arbre généalogique : {{ errorMessage }}
         </div>
 
-        <div v-else-if="tree" class="flex flex-col items-center gap-8 scroll-auto py-15">
+        <div v-else-if="tree" class="flex flex-col items-center gap-8 scroll-auto py-5">
           <div class="w-full">
             <!-- premier bloc : SOUCHE -->
             <h3 class="text-center font-heading text-3xl mb-10">La Souche</h3>
@@ -38,6 +38,13 @@
             <BranchItem :branch="invisibleBranch" :branch-name="'Branche Invisible'" />
             <BranchItem :branch="deadBranch" :branch-name="'Branche Morte'" />
           </div>
+        </div>
+      </div>
+      <div
+        class="absolute flex justify-center items-center w-full h-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-200/50 backdrop-blur-xs rounded-2xl"
+      >
+        <div>
+          <p class="mx-auto text-center">Après plusieurs millénaires</p>
         </div>
       </div>
     </div>

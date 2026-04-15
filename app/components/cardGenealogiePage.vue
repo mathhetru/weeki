@@ -1,9 +1,9 @@
 <template>
   <NuxtLink
-    v-for="entite in couple"
+    v-for="entite in props.couple"
     :key="entite.id"
     :to="`/entites/${entite.id}`"
-    class="border border-primary rounded-lg px-2.5 py-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
+    class="relative border border-primary rounded-lg px-2.5 py-4 backdrop-blur-xs hover:shadow-lg hover:bg-white transition flex gap-2"
     :class="[`col-start-${entite.place}`, couple.length === 1 ? 'w-1/2' : 'w-full']"
   >
     <div v-if="entite.image_url" class="w-15 h-15 rounded-full overflow-hidden shrink-0">
@@ -26,13 +26,53 @@
         <UIcon name="gg:gender-male" />
       </div>
     </div>
+    <div
+      v-if="firstLine(entite)"
+      class="absolute left-1/2 right-1/2 -top-19 h-19 w-px bg-primary pointer-events-none"
+    />
   </NuxtLink>
+  <div
+    v-if="couple.length === 2 && !props.couple.some((e) => e.nom.includes('Morckoor'))"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 h-16 w-px bg-primary pointer-events-none"
+  />
+  <div
+    v-if="secondLine"
+    class="absolute right-1/2 top-27.5 h-px w-[26%] bg-primary pointer-events-none"
+  />
+  <div
+    v-if="thirdLine"
+    class="absolute left-1/2 top-27.5 -translate-x-1/2 h-px w-[52%] bg-primary pointer-events-none"
+  />
 </template>
 
 <script setup lang="ts">
   import type { EntiteOnTree } from '~/types/genealogie.types'
 
-  defineProps<{
+  const props = defineProps<{
     couple: EntiteOnTree[]
   }>()
+
+  const firstLine = (entite: EntiteOnTree) => {
+    const firstLineNames = [
+      'Skoor',
+      'Noor',
+      'Tengoor',
+      'Golja',
+      "Ot'Skoor",
+      'Galdec',
+      "Ot'Tengoor",
+      'Queënzy',
+      'Morckoor',
+      'Olja',
+      'Weëna',
+      'Armskoor',
+    ]
+    return firstLineNames.includes(entite.nom)
+  }
+
+  const secondLine = computed(() =>
+    props.couple.some((e) => e.nom.includes('Naounë') || e.nom.includes('Noor'))
+  )
+
+  const thirdLine = computed(() => props.couple.some((e) => e.nom.includes('Tengoor')))
 </script>
