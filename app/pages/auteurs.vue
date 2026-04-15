@@ -4,12 +4,13 @@
       <h1 class="text-5xl mb-6 font-heading">{{ data?.title }}</h1>
       <h2 class="text-1xl mb-12">{{ data?.subtitle }}</h2>
 
-      <div class="w-full lg:w-[70%] flex gap-3 lg:gap-8 h-80 sm:h-100 lg:h-100">
+      <div class="w-full lg:w-[70%] flex gap-12 lg:gap-14 h-80 sm:h-100 lg:h-100">
         <NuxtLink
           v-for="writer in data?.writers"
           :key="writer.slot"
           :to="applySlot(writer?.slot)"
-          class="relative rounded-lg lg:rounded-2xl overflow-hidden w-full h-full"
+          class="relative rounded-lg lg:rounded-2xl overflow-hidden w-full h-full transition-transform duration-500"
+          :class="route.query.tab === `${writer.slot}` ? 'scale-110' : 'scale-100'"
         >
           <div class="absolute inset-0 overflow-hidden">
             <NuxtImg
@@ -31,13 +32,27 @@
         </NuxtLink>
       </div>
     </div>
+    <TabsWriter ref="tabsRef" />
   </div>
 </template>
 
 <script setup lang="ts">
+  import TabsWriter from '../components/TabsWriters.vue'
   const { data } = await useAsyncData('auteurs', () => queryCollection('auteurs').first())
+  const route = useRoute()
+
+  const tabsRef = ref<InstanceType<typeof TabsWriter> | null>(null)
 
   const applySlot = (slot: string) => {
-    return `#${slot}`
+    return `/auteurs?tab=${slot}`
   }
+
+  watch(
+    () => route.query.tab,
+    () => {
+      nextTick(() => {
+        tabsRef.value?.$el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+    }
+  )
 </script>
