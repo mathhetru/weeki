@@ -6,13 +6,14 @@ export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
   const typeFilter = ref<typeFilter>('tous')
   const searchValue = ref<string>('')
-  const isLoading = ref(true)
+  const isLoading = ref(false)
   const isError = ref(false)
   const errorMessage = ref('')
   const currentPage = ref(1)
   const hasMore = ref(true)
   const tree = ref<EntiteTree[][][]>([])
   const isOpenDrawer = ref(false)
+  const isInitialized = ref(false)
 
   const getEntites = async () => {
     if (!hasMore.value || isLoading.value) return
@@ -36,6 +37,7 @@ export const useEntitesStore = defineStore('entites', () => {
       errorMessage.value = err.message || 'Une erreur est survenue'
     } finally {
       isLoading.value = false
+      isInitialized.value = true
     }
   }
 
@@ -94,6 +96,7 @@ export const useEntitesStore = defineStore('entites', () => {
     searchValue,
     isLoading,
     isError,
+    isInitialized,
     errorMessage,
     loadMore,
     getEntites,

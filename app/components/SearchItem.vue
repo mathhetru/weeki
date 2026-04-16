@@ -92,7 +92,7 @@
   import { storeToRefs } from 'pinia'
 
   const entitesStore = useEntitesStore()
-  const { entites, typeFilter, searchValue, isLoading, isError, errorMessage } =
+  const { entites, typeFilter, searchValue, isLoading, isError, errorMessage, isInitialized } =
     storeToRefs(entitesStore)
 
   const loadMoreTrigger = ref<HTMLElement | null>(null)
@@ -146,7 +146,7 @@
   })
 
   const hasNoResults = computed(() => {
-    return !isLoading.value && !isError.value && entites.value.length === 0
+    return isInitialized.value && !isLoading.value && !isError.value && entites.value.length === 0
   })
 
   watch(searchValue, () => {
