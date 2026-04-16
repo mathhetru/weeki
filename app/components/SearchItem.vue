@@ -70,11 +70,8 @@
         <p class="text-gray-500">Aucune entité ne correspond à vos critères de recherche.</p>
       </div>
 
-      <div
-        v-if="entitesFilter.length > 0"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
-        <EntitesItem :entites="entitesFilter" />
+      <div v-if="entites.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <EntitesItem :entites="entites" />
       </div>
     </div>
     <div ref="loadMoreTrigger" class="flex items-center justify-center">
@@ -95,7 +92,7 @@
   import { storeToRefs } from 'pinia'
 
   const entitesStore = useEntitesStore()
-  const { typeFilter, searchValue, entitesFilter, isLoading, isError, errorMessage } =
+  const { entites, typeFilter, searchValue, isLoading, isError, errorMessage, isInitialized } =
     storeToRefs(entitesStore)
 
   const loadMoreTrigger = ref<HTMLElement | null>(null)
@@ -107,6 +104,7 @@
     }
   }
 
+  let searchTimeout: ReturnType<typeof setTimeout> | null = null
   let observer: IntersectionObserver | null = null
 
   onMounted(async () => {
@@ -148,6 +146,11 @@
   })
 
   const hasNoResults = computed(() => {
-    return !isLoading.value && !isError.value && entitesFilter.value.length === 0
+    return isInitialized.value && !isLoading.value && !isError.value && entites.value.length === 0
+  })
+
+  watch(searchValue, () => {
+    if (searchTimeout) clearTimeout(searchTimeout)
+    searchTimeout = setTimeout(() => entitesStore.resetAndLoad(), 300)
   })
 </script>

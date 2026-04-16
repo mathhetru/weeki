@@ -1,21 +1,22 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import type { Entite, EntiteTree, typeFilter } from '~/types/database.types'
 
 export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
   const typeFilter = ref<typeFilter>('tous')
   const searchValue = ref<string>('')
-  const isLoading = ref(true)
+  const isLoading = ref(false)
   const isError = ref(false)
   const errorMessage = ref('')
   const currentPage = ref(1)
   const hasMore = ref(true)
   const tree = ref<EntiteTree[][][]>([])
   const isOpenDrawer = ref(false)
+  const isInitialized = ref(false)
 
   const getEntites = async () => {
-    if (!hasMore.value) return
+    if (!hasMore.value || isLoading.value) return
     isError.value = false
     errorMessage.value = ''
     isLoading.value = true
@@ -24,6 +25,7 @@ export const useEntitesStore = defineStore('entites', () => {
         params: {
           type: typeFilter.value !== 'tous' ? typeFilter.value : undefined,
           page: currentPage.value,
+          q: searchValue.value || undefined,
         },
       })
 
@@ -35,6 +37,7 @@ export const useEntitesStore = defineStore('entites', () => {
       errorMessage.value = err.message || 'Une erreur est survenue'
     } finally {
       isLoading.value = false
+      isInitialized.value = true
     }
   }
 
@@ -62,36 +65,6 @@ export const useEntitesStore = defineStore('entites', () => {
       throw err
     }
   }
-
-  const searchEntites = async (terme: string) => {
-    if (!terme) {
-      await getEntites()
-      return
-    }
-
-    isLoading.value = true
-    errorMessage.value = ''
-
-    try {
-      entites.value = await $fetch<Entite[]>('/api/entites/search', {
-        params: { q: terme },
-      })
-    } catch (e) {
-      const err = e as Error
-      isError.value = true
-      errorMessage.value = err.message
-    } finally {
-      isLoading.value = false
-    }
-  }
-
-  const entitesFilter = computed(() => {
-    if (!searchValue.value) return entites.value
-
-    return entites.value.filter((e) =>
-      e.nom.toLowerCase().includes(searchValue.value.toLowerCase())
-    )
-  })
 
   const getEntitesOnTree = async (selectedFamilyRoot: string) => {
     isLoading.value = true
@@ -123,13 +96,12 @@ export const useEntitesStore = defineStore('entites', () => {
     searchValue,
     isLoading,
     isError,
+    isInitialized,
     errorMessage,
-    entitesFilter,
     loadMore,
     getEntites,
     resetAndLoad,
     getEntiteById,
-    searchEntites,
     getEntitesOnTree,
     resetFilters,
     hasMore,

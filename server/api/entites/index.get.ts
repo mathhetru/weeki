@@ -8,12 +8,17 @@ export default defineEventHandler(async (event) => {
   const pageSize = 9
   const from = (page - 1) * pageSize
   const to = from + pageSize - 1
+  const searchTerm = query.q as string | undefined
 
   let supabaseQuery = supabase
     .from('entites')
     .select('*', { count: 'exact' })
     .range(from, to)
     .order('nom')
+
+  if (searchTerm) {
+    supabaseQuery = supabaseQuery.ilike('nom', `%${searchTerm}%`) // ← conditionnel
+  }
 
   if (type && type !== 'tous') {
     supabaseQuery = supabaseQuery.eq('type', type)
