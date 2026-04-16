@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import type { Entite, EntiteTree, typeFilter } from '~/types/database.types'
 
 export const useEntitesStore = defineStore('entites', () => {
@@ -24,6 +24,7 @@ export const useEntitesStore = defineStore('entites', () => {
         params: {
           type: typeFilter.value !== 'tous' ? typeFilter.value : undefined,
           page: currentPage.value,
+          q: searchValue.value || undefined,
         },
       })
 
@@ -63,36 +64,6 @@ export const useEntitesStore = defineStore('entites', () => {
     }
   }
 
-  const searchEntites = async (terme: string) => {
-    if (!terme) {
-      await getEntites()
-      return
-    }
-
-    isLoading.value = true
-    errorMessage.value = ''
-
-    try {
-      entites.value = await $fetch<Entite[]>('/api/entites/search', {
-        params: { q: terme },
-      })
-    } catch (e) {
-      const err = e as Error
-      isError.value = true
-      errorMessage.value = err.message
-    } finally {
-      isLoading.value = false
-    }
-  }
-
-  const entitesFilter = computed(() => {
-    if (!searchValue.value) return entites.value
-
-    return entites.value.filter((e) =>
-      e.nom.toLowerCase().includes(searchValue.value.toLowerCase())
-    )
-  })
-
   const getEntitesOnTree = async (selectedFamilyRoot: string) => {
     isLoading.value = true
     isError.value = false
@@ -124,12 +95,10 @@ export const useEntitesStore = defineStore('entites', () => {
     isLoading,
     isError,
     errorMessage,
-    entitesFilter,
     loadMore,
     getEntites,
     resetAndLoad,
     getEntiteById,
-    searchEntites,
     getEntitesOnTree,
     resetFilters,
     hasMore,
