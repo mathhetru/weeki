@@ -15,7 +15,7 @@ export const useEntitesStore = defineStore('entites', () => {
   const isOpenDrawer = ref(false)
 
   const getEntites = async () => {
-    if (!hasMore.value) return
+    if (!hasMore.value || isLoading.value) return
     isError.value = false
     errorMessage.value = ''
     isLoading.value = true
