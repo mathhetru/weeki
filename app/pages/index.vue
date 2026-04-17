@@ -6,8 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  const { data } = await useAsyncData('home', () => queryCollection('pages').first())
+  const { data } = await useAsyncData('home', () => queryCollection('home').first())
 
-  // TODO responsive design
   // TODO SEO optimization
 </script>

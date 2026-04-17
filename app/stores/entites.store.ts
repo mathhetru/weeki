@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { Entite, EntiteTree, typeFilter } from '~/types/database.types'
+import type { Entite, typeFilter } from '~/types/entites.types'
 
 export const useEntitesStore = defineStore('entites', () => {
   const entites = ref<Entite[]>([])
@@ -11,7 +11,6 @@ export const useEntitesStore = defineStore('entites', () => {
   const errorMessage = ref('')
   const currentPage = ref(1)
   const hasMore = ref(true)
-  const tree = ref<EntiteTree[][][]>([])
   const isOpenDrawer = ref(false)
   const isInitialized = ref(false)
 
@@ -66,22 +65,6 @@ export const useEntitesStore = defineStore('entites', () => {
     }
   }
 
-  const getEntitesOnTree = async (selectedFamilyRoot: string) => {
-    isLoading.value = true
-    isError.value = false
-
-    try {
-      const data = await $fetch<EntiteTree[][][]>(`/api/genealogie/${selectedFamilyRoot}`)
-      tree.value = data
-    } catch (e) {
-      const err = e as Error
-      isError.value = true
-      errorMessage.value = err.message
-    } finally {
-      isLoading.value = false
-    }
-  }
-
   const resetFilters = () => {
     typeFilter.value = 'tous'
     searchValue.value = ''
@@ -102,7 +85,6 @@ export const useEntitesStore = defineStore('entites', () => {
     getEntites,
     resetAndLoad,
     getEntiteById,
-    getEntitesOnTree,
     resetFilters,
     hasMore,
     isOpenDrawer,

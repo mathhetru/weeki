@@ -12,7 +12,6 @@
         <UIcon name="fluent-emoji-high-contrast:leaf-fluttering-in-wind" />
         {{ data.title.text }}
       </NuxtLink>
-
       <div class="hidden md:flex items-center gap-6 lg:gap-9">
         <NuxtLink
           v-for="page in data.pages"
@@ -25,7 +24,6 @@
           {{ page.text }}
         </NuxtLink>
       </div>
-
       <NuxtLink
         :to="data.contact.link"
         :aria-label="data.contact.ariaLabel"

@@ -19,12 +19,12 @@
         :key="feature.title"
         :to="searchItem(feature?.search)"
         :class="getGridClass(index)"
-        class="group"
         @click="addTypeFilter(feature?.search as typeFilter)"
       >
         <div class="absolute inset-0 overflow-hidden">
           <NuxtImg
-            :provider="providerToUse(feature?.img)"
+            provider="cloudinary"
+            format="webp"
             :src="feature?.img"
             :alt="`Image de ${feature?.title}`"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -46,11 +46,11 @@
 
 <script setup lang="ts">
   import { useEntitesStore } from '../stores/entites.store'
-  import type { typeFilter } from '../types/database.types'
+  import type { typeFilter } from '../types/entites.types'
 
   const entitesStore = useEntitesStore()
 
-  const { data } = await useAsyncData('home-hero', () => queryCollection('pages').first())
+  const { data } = await useAsyncData('home-hero', () => queryCollection('home').first())
 
   const getGridClass = (index: number) => {
     const baseClass = 'relative rounded-lg lg:rounded-2xl overflow-hidden'
@@ -76,6 +76,4 @@
     }
     return '#weekipedia'
   }
-
-  const providerToUse = (img: string) => (img.includes('/images/') ? undefined : 'cloudinary')
 </script>

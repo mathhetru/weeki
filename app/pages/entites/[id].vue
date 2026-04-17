@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
   import { useEntitesStore } from '../../stores/entites.store'
-  import type { Entite } from '../../types/database.types'
+  import type { Entite } from '../../types/entites.types'
 
   const route = useRoute()
   const idEntite = route.params.id
